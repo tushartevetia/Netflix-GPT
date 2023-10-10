@@ -12,3 +12,5 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4M2E0M2E5ZTAzNGYyZjdkNzM2ZTUwNmE1YTVlNzJlYyIsInN1YiI6IjY1MjNiMjQ5MGNiMzM1MTZmZWM0MWJlOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wczuk1CJBjmzclToigLaCsKLzCYulxPRE1CGxoAr6PQ",
   },
 };
+
+export const MOVIE_POSTER = "https://image.tmdb.org/t/p/w500";
