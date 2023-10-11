@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO_URL } from "../utils/constant";
+import { LOGO_URL, SUPPORTED_LANGUAGES } from "../utils/constant";
+import { toggleGPTSearchView } from "../utils/GptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
 
   useEffect(() => {
     // Firebase Function to check user loggedin and logout status and redirect accordigly + restricting user from navigating to other urls manually
@@ -48,16 +51,42 @@ const Header = () => {
         navigate("/error");
       });
   };
+
+  // Handle GPT Search component hide and show
+  const handleGPTSearch = () => {
+    dispatch(toggleGPTSearchView());
+  };
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
   return (
     <div className="w-full px-5 md:px-8 py-4 absolute md:bg-gradient-to-b from-black z-10 flex justify-between items-center">
       <img className="w-24 md:w-40 " src={LOGO_URL}></img>
       {user && (
         <div className="flex gap-4">
-          <img className="w-10" src={user?.photoURL} />
+          {showGPTSearch && (
+            <select
+              onChange={handleLanguageChange}
+              className="bg-gray-800 text-white m-2 p-1"
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
 
+          <button
+            onClick={handleGPTSearch}
+            className="bg-purple-900 px-2 py-1 m-1 text-white rounded-md font-medium"
+          >
+            {showGPTSearch ? "Home" : "GPT Search"}
+          </button>
+          <img className="w-12" src={user?.photoURL} />
           <div
             onClick={handleSignOut}
-            className=" bg-red-600 p-2 px-3 rounded-md font-semibold text-white cursor-pointer hover:bg-red-700"
+            className=" bg-red-600 p-2 px-3 m-1 rounded-md font-semibold text-white cursor-pointer hover:bg-red-700"
           >
             Sign Out
           </div>

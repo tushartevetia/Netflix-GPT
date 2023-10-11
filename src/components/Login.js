@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { DEFAULT_USER_AVATAR } from "../utils/constant";
+import { BAKGROUND_URL, DEFAULT_USER_AVATAR } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -91,10 +91,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute md:h-full md:w-full hidden md:block">
-        <img
-          className="md:h-full md:w-full"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-        />
+        <img className="md:h-full md:w-full" src={BAKGROUND_URL} />
       </div>
 
       <form
