@@ -5,9 +5,9 @@ import { BAKGROUND_URL } from "../utils/constant";
 
 const GPTSearch = () => {
   return (
-    <div className="text-white">
-      <div className="absolute md:h-full md:w-full hidden md:block">
-        <img className="md:h-full md:w-full" src={BAKGROUND_URL} />
+    <div className="text-white md:pt-0">
+      <div className="fixed h-full w-full md:block">
+        <img className="h-full object-cover w-full" src={BAKGROUND_URL} />
       </div>
       <GptSearchBar />
       <GptMovieSuggestion />

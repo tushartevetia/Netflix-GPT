@@ -1,3 +1,4 @@
+// All custom config related to app
 import { createSlice } from "@reduxjs/toolkit";
 
 const config = createSlice({

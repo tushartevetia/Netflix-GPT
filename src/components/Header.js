@@ -56,11 +56,12 @@ const Header = () => {
   const handleGPTSearch = () => {
     dispatch(toggleGPTSearchView());
   };
+  // Handle Language change feature
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="w-full px-5 md:px-8 py-4 absolute md:bg-gradient-to-b from-black z-10 flex justify-between items-center">
+    <div className="w-full px-5 md:px-8 py-4 absolute bg-gradient-to-b from-black z-10 flex flex-row md:flex-row gap-4 justify-between items-center">
       <img className="w-24 md:w-40 " src={LOGO_URL}></img>
       {user && (
         <div className="flex gap-4">
@@ -70,7 +71,11 @@ const Header = () => {
               className="bg-gray-800 text-white m-2 p-1"
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
+                <option
+                  className="text-sm p-1"
+                  key={lang.identifier}
+                  value={lang.identifier}
+                >
                   {lang.name}
                 </option>
               ))}
@@ -83,13 +88,15 @@ const Header = () => {
           >
             {showGPTSearch ? "Home" : "GPT Search"}
           </button>
-          <img className="w-12" src={user?.photoURL} />
-          <div
-            onClick={handleSignOut}
-            className=" bg-red-600 p-2 px-3 m-1 rounded-md font-semibold text-white cursor-pointer hover:bg-red-700"
-          >
-            Sign Out
-          </div>
+          <img className="w-12 hidden md:block" src={user?.photoURL} />
+          {!showGPTSearch && (
+            <div
+              onClick={handleSignOut}
+              className=" bg-red-600 p-2 px-3 m-1 rounded-md font-semibold text-white cursor-pointer hover:bg-red-700"
+            >
+              Sign Out
+            </div>
+          )}
         </div>
       )}
     </div>

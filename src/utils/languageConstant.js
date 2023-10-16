@@ -1,3 +1,4 @@
+// Language constant file
 export const lang = {
   en: {
     search: "Search",
