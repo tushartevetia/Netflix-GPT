@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const AllVideosContainer = () => {
   const movies = useSelector((store) => store.movies);
+
   return (
     <div className="z-20 pb-5 md:pb-0 relative md:-top-[110px] bg-transparent">
       <MovieList
