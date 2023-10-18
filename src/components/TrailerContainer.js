@@ -12,7 +12,7 @@ const TrailerContainer = () => {
   const { title, overview, id } = trailerMovie;
   return (
     <div>
-      <TrailerTitile title={title} overview={overview} />
+      <TrailerTitile title={title} overview={overview} movieId={id} />
       <TrailerVideo trailerId={id} />
     </div>
   );
