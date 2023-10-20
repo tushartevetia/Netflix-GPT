@@ -2,7 +2,7 @@
 export const lang = {
   en: {
     search: "Search",
-    placeholder: "What would you like to watch today?",
+    placeholder: "Tell us your mood",
   },
   hin: {
     search: "खोज",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import useNowPlayingMoviesFetch from "../utils/useNowPlayingMoviesFetch";
 import TrailerContainer from "./TrailerContainer";
@@ -7,10 +7,15 @@ import usePopularMovies from "../utils/usePopularMovies";
 import useTopRatedMovies from "../utils/useTopRatedMovies";
 import useUpcomingMovies from "../utils/useUpcomingMovies";
 import GPTSearch from "./GPTSearch";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeWatchNowMovies } from "../utils/movieSlice";
 
 const Browse = () => {
   const showGpt = useSelector((store) => store.gpt.showGPTSearch);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(removeWatchNowMovies());
+  }, []);
 
   useNowPlayingMoviesFetch();
   usePopularMovies();

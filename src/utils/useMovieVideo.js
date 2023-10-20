@@ -25,7 +25,7 @@ const useMovieVideo = (movieId) => {
   };
 
   useEffect(() => {
-    getWatchNowMovie();
+    !watchNowMovie && getWatchNowMovie();
   }, []);
 };
 

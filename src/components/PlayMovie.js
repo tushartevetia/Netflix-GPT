@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useMovieVideo from "../utils/useMovieVideo";
-import MovieList from "./MovieList";
 import Footer from "./Footer";
 
 const PlayMovie = () => {
-  const [movieInfo, setMovieInfo] = useState("");
+  const [movieInfo, setMovieInfo] = useState(
+    "Seems like we have no info right now but we are working on it!"
+  );
   const [toggleInfo, setToggleInfo] = useState(true);
   const movieId = useParams();
   useMovieVideo(movieId?.id);
@@ -35,6 +36,7 @@ const PlayMovie = () => {
   useEffect(() => {
     toggleMovieInfo();
   }, [toggleInfo]);
+  if (!allmovies.watchNowMovie) return;
   return (
     <>
       <div className="w-full md:p-0 min-h-screen text-white bg-black flex justify-start md:justify-between md:items-center  gap-6 flex-col  md:flex-row">

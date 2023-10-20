@@ -29,6 +29,9 @@ const movieSlice = createSlice({
     addWatchNowMovies: (state, action) => {
       state.watchNowMovie = action.payload;
     },
+    removeWatchNowMovies: (state, action) => {
+      state.watchNowMovie = null;
+    },
   },
 });
 
@@ -39,6 +42,7 @@ export const {
   addTopRatedMovies,
   addUpcomingMovies,
   addWatchNowMovies,
+  removeWatchNowMovies,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
